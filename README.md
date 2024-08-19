@@ -43,5 +43,10 @@ Bootstrap 4
 JavaScript
 jQuery
 FakeStoreAPI para datos de productos.
-![Iniciar Sesión](16.png)
+Dejo acontinuacion capturas de este proyecto 
 
+![Captura 12](12.png)
+![Captura 13](13.png)
+![Captura 14](14.png)
+![Captura 15](15.png)
+![Iniciar Sesión](16.png)
