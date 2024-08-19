@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realizar Compra</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center">Realizar Compra</h1>
+        <form>
+            <div class="form-group">
+                <label for="name">Nombre Completo</label>
+                <input type="text" class="form-control" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Dirección de Envío</label>
+                <input type="text" class="form-control" id="address" required>
+            </div>
+            <div class="form-group">
+                <label for="payment">Método de Pago</label>
+                <select class="form-control" id="payment" required>
+                    <option>Tarjeta de Crédito</option>
+                    <option>PayPal</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Finalizar Compra</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</body>
+</html>

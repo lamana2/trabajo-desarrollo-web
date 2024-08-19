@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Productos</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e9ecef; /* Fondo gris suave */
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .product {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+            text-align: center;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .product:hover {
+            transform: scale(1.03);
+        }
+        .cart {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 300px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .cart h4 {
+            margin-bottom: 15px;
+        }
+        .cart ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .cart li {
+            margin-bottom: 10px;
+        }
+        .cart button {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Carga dinámica del encabezado y barra lateral -->
+    <div id="header"></div>
+    <div id="sidenav"></div>
+    
+    <div class="container">
+        <h1 class="my-4 text-center">Catálogo de Productos Electrónicos</h1>
+        <div class="row" id="product-list">
+            <!-- Productos aquí -->
+        </div>
+    </div>
+
+    <div class="cart" id="cart">
+        <h4>Carro de Compras</h4>
+        <ul id="cart-items" class="list-unstyled">
+            <!-- Items del carrito aquí -->
+        </ul>
+        <button class="btn btn-primary btn-block" onclick="checkout()">Pagar</button>
+    </div>
+
+    <div id="footer"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        const cart = [];
+
+        $(document).ready(function() {
+            // Cargar el encabezado
+            $('#header').load('components/Headers.html');
+
+            // Cargar la barra lateral
+            $('#sidenav').load('components/SideNav.html');
+
+            // Cargar el pie de página
+            $('#footer').load('components/Footers.html');
+
+            // Cargar productos
+            $.ajax({
+                url: 'https://fakestoreapi.com/products/category/electronics',
+                method: 'GET',
+                success: function(products) {
+                    products.sort((a, b) => a.price - b.price);
+                    
+                    const productList = $('#product-list');
+                    products.forEach(product => {
+                        const productElement = $(`
+                            <div class="col-md-4 mb-4">
+                                <div class="product">
+                                    <img src="${product.image}" alt="${product.title}" class="img-fluid" style="max-height: 200px; object-fit: cover;">
+                                    <h5>${product.title}</h5>
+                                    <p>Precio: $${product.price}</p>
+                                    <button class="btn btn-success" onclick="addToCart(${product.id})">Agregar al Carrito</button>
+                                </div>
+                            </div>
+                        `);
+                        productList.append(productElement);
+                    });
+                }
+            });
+        });
+
+        function addToCart(productId) {
+            $.ajax({
+                url: `https://fakestoreapi.com/products/${productId}`,
+                method: 'GET',
+                success: function(product) {
+                    // Verificar si el producto ya está en el carrito
+                    if (!cart.find(item => item.id === product.id)) {
+                        cart.push(product);
+                        const cartItems = $('#cart-items');
+                        const cartItem = $(`<li>${product.title} - $${product.price}</li>`);
+                        cartItems.append(cartItem);
+                    } else {
+                        alert('El producto ya está en el carrito.');
+                    }
+                }
+            });
+        }
+
+        function checkout() {
+            alert('Pagar funcionalidad en desarrollo...');
+        }
+    </script>
+</body>
+</html>

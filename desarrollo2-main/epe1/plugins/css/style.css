@@ -1,0 +1,96 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f8f9fa98;
+    color: #333;
+    font-family: Arial, sans-serif; /* Agrega una fuente más moderna */
+}
+
+main {
+    flex: 1;
+    padding: 20px; /* Espaciado adicional en el contenido principal */
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #343a40;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
+}
+
+.navbar-brand, .nav-link {
+    color: #ffffff;
+}
+
+.navbar-brand:hover, .nav-link:hover {
+    color: #dddddd;
+}
+
+.navbar-nav .nav-item {
+    margin-left: 15px; /* Espaciado entre los elementos de navegación */
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: rgb(0, 153, 255);
+    text-align: center;
+    padding: 20px 0; /* Espaciado adicional en el pie de página */
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
+}
+
+/* Product Card Styles */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
+    transition: transform 0.3s; /* Transición suave */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Efecto de zoom en hover */
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto; /* Ajusta la altura de las imágenes */
+}
+
+/* Cart Styles */
+.cart {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 300px;
+    border: 1px solid #ddd;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
+    padding: 15px;
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+#cart-items {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#cart-items li {
+    margin-bottom: 10px; /* Espaciado entre items del carrito */
+}
+
+/* Button Styles */
+.btn {
+    transition: background-color 0.3s, color 0.3s; /* Transición suave en hover */
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    color: #ffffff;
+}
